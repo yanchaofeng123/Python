@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>任务提交系统</title>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+<link href="/res/frame.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="/res/frame.js?v=4.01"></script>
+<script language="javascript" src="/res/drag.js"></script>
+<meta property="qc:admins" content="17001304323630165351163757205756117" />
+</head>
+
+<body>
+<div id="top_border">
+	<table width="100%">
+		<tr>
+			<td align="left" style="width:280px"><img id="top_bg" src="/res/img/list_logo.png"></td>
+			<td align="center" style="padding-top:10px;" id="work_update_area"></td>
+			<td align="right" style="width:300px; padding-right:15px; padding-top:10px;">
+				<nobr>
+				<a class="top_right">晏超峰</a>
+				<span class="right_split"></span>
+				<a class="top_right" href="/m/ftp/search_ftp.php" onclick="load_src(this.href, 700, 400); return false;">找FTP</a>
+				<span class="right_split"></span>
+				<a class="top_right" href="/m/sys/me.modifypass.php" onclick="load_src(this.href, 700, 400); return false;">修改密码</a>
+				<span class="right_split"></span>
+				<a class="top_right" href="/m/sys/me.edit.php" onclick="load_src(this.href, 700, 400); return false;">修改资料</a>
+				<span class="right_split"></span>
+				<a class="top_right" href="/?op=logout">退出</a>
+				</nobr>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<table width="100%" id="main_bar">
+	<tr>
+		<td id="side_menu" valign="top">
+			<div id="sys_top_menu">
+<a id="ma_10" href="m/work/work.php" class="left_link" target="main" onclick="set_click(this)" onfocus="this.blur()"><img class="menu_icon" src="res/menu_icon/103.png"> 任务列表</a><a id="ma_11" href="m/mywork/mywork.php" class="left_link" target="main" onclick="set_click(this)" onfocus="this.blur()"><img class="menu_icon" src="res/menu_icon/226.png"> 自记任务</a><a id="ma_31" href="m/work/count.php" class="left_link" target="main" onclick="set_click(this)" onfocus="this.blur()"><img class="menu_icon" src="res/menu_icon/93.png"> 技术人员状态</a><a id="ma_32" href="m/work/pingjia.php" class="left_link" target="main" onclick="set_click(this)" onfocus="this.blur()"><img class="menu_icon" src="res/menu_icon/471.png"> 技术人员评价</a><a id="ma_15" href="m/pingfen/pf.php" class="left_link" target="main" onclick="set_click(this)" onfocus="this.blur()"><img class="menu_icon" src="res/menu_icon/102.png"> 任务评分辅助</a><a id="ma_81" href="m/set/notice.php" class="left_link" target="main" onclick="set_click(this)" onfocus="this.blur()"><img class="menu_icon" src="res/menu_icon/255.png"> 通知管理</a>			</div>
+		</td>
+
+		<td id="frame_content"><iframe id="sys_frame" name="main" onload="frame_loaded_do(this)" src="" framesrc="" frameborder="0" scrolling="auto" width="100%" height="365" align="absmiddle"></iframe></td>
+	</tr>
+</table>
+
+<div id="logo_bar" class="logo" style="display:none;"></div>
+<div id="menu_bar" style="display:none;"></div>
+<div id="bottom_border" style="display:none;"></div>
+
+
+
+<script type="text/javascript">
+last_click_obj = 0;
+function set_click(obj) {
+	if (last_click_obj) {
+		last_click_obj.className = "left_link";
+	}
+	last_click_obj = obj;
+	obj.className = "left_link_select";
+}
+function set_select_menu(mid) {
+	if (last_click_obj) {
+		last_click_obj.className = "left_link";
+	}
+	last_click_obj = byid("ma_"+mid);
+	last_click_obj.className = "left_link_select"
+}
+</script>
+
+
+<!-- sys dialog box -->
+<div id="dl_layer_div" onmousedown="load_src(0);return false;" style="position:absolute; filter:Alpha(opacity=85); display:none; background: #d1d1d1; z-index:99998; opacity:0.85;"></div>
+<div id="dl_box_div" onmousedown="handlestart(event, this)" class="obox" style="position:absolute; display:none; z-index:99999">
+	<div id="dl_box_title_box">
+		<div id="dl_box_title"></div>
+		<div id="dl_box_op"><a href="javascript:load_src(0);">关闭</a></div>
+		<div class="clear"></div>
+	</div>
+	<div id="dl_iframe"><iframe src="about:blank" frameborder="0" scrolling="auto" width="100%" id="dl_set_iframe" onload="update_title(this)"></iframe></div>
+</div>
+
+
+<!-- msg_box -->
+<div id="sys_msg_box" style="display:none; position:absolute;cursor:pointer;" onclick="msg_box_hide()" onmouseover="msg_box_hold()" onmouseout="msg_box_delay_hide()" title="点击关闭">
+	<table cellpadding="0">
+		<tr>
+			<td class="left_div"></td>
+			<td class="center_div"><nobr id="sys_msg_box_content"></nobr></td>
+			<td class="right_div"></td>
+		</tr>
+	</table>
+</div>
+
+
+<div id="player_area" style="display:none;"></div>
+<script type="text/javascript" src="/res/auto.js"></script>
+
+<script language="JavaScript">
+dom_loaded.load(init);
+</script>
+
+</body>
+</html>
